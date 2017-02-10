@@ -8,16 +8,24 @@ const svg = d3.select('div.board')
 
 const _updateEnemies = function () {
   //Create new enemies
-  const selection = svg.selectAll('image').data([1, 2, 3, 4, 5, 6], id => id)
-                  .enter()
-                  .append('image')
-                  .attr('class', 'enemy')
-                  .attr('x', () => randomCoor(w - 46))
-                  .attr('y', () => randomCoor(h - 80))
-                  .attr('xlink:href', 'spaceInvader.gif');
+  const selection = svg.selectAll('image')
+    .data([1, 2, 3, 4, 5, 6], id => id);
+
+  selection
+    .enter()
+    .append('image')
+    .attr('class', 'enemy')
+    .attr('x', () => randomCoor(w - 46))
+    .attr('y', () => randomCoor(h - 80))
+    .attr('xlink:href', 'spaceInvader.gif');
 
   //Edit existing enemies
+  selection
+    .transition().duration(1500).ease('linear')
+    .attr('x', () => randomCoor(w - 46))
+    .attr('y', () => randomCoor(h - 80));
   //.attr('x', randomCoor(w - 46), 'y', randomCoor(h - 80))
+
 };
 
 //function that accepts element
@@ -27,4 +35,4 @@ const randomCoor = function (max) {
 };
 
 //
-_updateEnemies();
+setInterval(_updateEnemies, 1500);
