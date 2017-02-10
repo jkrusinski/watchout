@@ -1,6 +1,6 @@
 /* your beautiful css styling goes here! */
 body {
-  background-image: url("Spacecatbackground.jpg");
+  background-image: url("magicSpace.gif");
   position: relative;
 }
 /* Note: an asteroid image is included in this repo.
@@ -20,11 +20,10 @@ div.board {
 }
 
 svg {
-  background-color: blue;
+  background-color: #332F6F;
+  border-radius: 5px;
 }
 
 svg .enemy {
   height: 80px;
-  x: 50;
-  y: 50;
 }
