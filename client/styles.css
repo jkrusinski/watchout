@@ -1,5 +1,30 @@
 /* your beautiful css styling goes here! */
-
+body {
+  background-image: url("Spacecatbackground.jpg");
+  position: relative;
+}
 /* Note: an asteroid image is included in this repo.
 Feel free to use it if you like. */
+.scoreboard {
+  float: right;
+  color: white;
+}
 
+div.board {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  margin: 200px 0 0 -225px;
+}
+
+svg {
+  background-color: blue;
+}
+
+svg .enemy {
+  height: 80px;
+  x: 50;
+  y: 50;
+}
