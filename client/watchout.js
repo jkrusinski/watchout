@@ -32,6 +32,8 @@ const _updateEnemies = function () {
     .attr('x', () => randomCoor(w - 46))
     .attr('y', () => randomCoor(h - 80));
 
+
+
 };
 
 //function that accepts element
@@ -46,5 +48,26 @@ svg.on('mousemove', function () {
      .attr('y', coor[1]);
 });
 //
+
+const findCatCoor = function () {
+  var catCoor = [];
+  catCoor.push(cat.attr('x'));
+  catCoor.push(cat.attr('y'));
+  return catCoor;
+};
+
+const findEnemyCoor = function () {
+  var enemyCoor = [];
+
+  return enemyCoor;
+};
+const checkPositions = function (catRadius, enemyRadius) {
+  const minDist = (catRadius + enemyRadius);
+
+  //var actDist = Math.sqrt(Math.pow((catX - enemyX), 2) + Math.pow((catY - enemyY), 2));
+  //if (actDist <= minDist) {
+  //EXPLODE
+  //}
+};
 _updateEnemies();
 setInterval(_updateEnemies, 1500);
