@@ -6,16 +6,29 @@ const svg = d3.select('div.board')
             .attr('width', w)
             .attr('height', h);
 
-const cat = svg.selectAll('image')
-               .data(['cat'], id => id);
+const cat = svg.selectAll('image').data(['cat'], id => id);
 
 cat.enter()
    .append('image')
    .attr('class', 'cat')
    .attr('xlink:href', 'balloonCat.gif');
 
+const highScore = d3.select('div.highscore');
+const currentScore = d3.select('div.current');
+const collisions = d3.select('div.collisions');
+let score = {
+  high: 0,
+  current: 0,
+  collisions: 0
+};
+
+const updateScore = function (element, counter) {
+  element.select('span').data([counter])
+         .text(d => d);
+};
+
 const _updateEnemies = function () {
-  //Create new enemies
+
   const selection = svg.selectAll('image')
     .data([1, 2, 3, 4, 5, 6], id => id);
 
@@ -27,18 +40,12 @@ const _updateEnemies = function () {
     .attr('y', () => randomCoor(h - 80))
     .attr('xlink:href', 'spaceInvader.gif');
 
-  //Edit existing enemies
   selection
     .transition().duration(1500).ease('linear')
     .attr('x', () => randomCoor(w - 46))
     .attr('y', () => randomCoor(h - 80));
-
-
-
 };
 
-//function that accepts element
-//randomize coordinate function;
 const randomCoor = function (max) {
   return Math.floor(Math.random() * (max + 1));
 };
@@ -80,10 +87,22 @@ const checkPositions = function () {
       Math.pow((catCoor[0] - enemyCoor[0]), 2) +
       Math.pow((catCoor[1] - enemyCoor[1]), 2));
     if (actDist <= minDist) {
-      console.log('Ya got hit!');
+      score.current = 0;
+      updateScore(currentScore, score.current);
+      score.collisions++;
+      updateScore(collisions, score.collisions);
+      return;
     }
   }
+
+  score.current++;
+  updateScore(currentScore, score.current);
+  if (score.current > score.high) {
+    score.high = score.current;
+    updateScore(highScore, score.high);
+  }
+
 };
 _updateEnemies();
-setInterval(checkPositions, 10);
+setInterval(checkPositions, 100);
 setInterval(_updateEnemies, 1500);
