@@ -3,6 +3,10 @@ body {
   background-image: url("magicSpace.gif");
   position: relative;
 }
+
+h1 {
+  color: white;
+}
 /* Note: an asteroid image is included in this repo.
 Feel free to use it if you like. */
 .scoreboard {
@@ -20,10 +24,15 @@ div.board {
 }
 
 svg {
+  cursor: none;
   background-color: #332F6F;
   border-radius: 5px;
 }
 
 svg .enemy {
   height: 80px;
+}
+
+svg .cat {
+  height: 100px;
 }
