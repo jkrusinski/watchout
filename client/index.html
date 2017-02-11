@@ -2,16 +2,28 @@
 <html>
   <head>
     <link rel='stylesheet' type='text/css' href='styles.css'>
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Hairline|Press+Start+2P" rel="stylesheet">
   </head>
   <body>
+    <audio autoplay loop src="99Luftballons.mp3"></audio>
     <h1>Balloon Cat Goes To SPACE!</h1>
-    <div class="scoreboard">
-      <!-- Modify the scoreboard when important events occur in your game! -->
-      <div class="highscore">High score: <span>0</span></div>
-      <div class="current">Current score: <span>0</span></div>
-      <div class="collisions">Collisions: <span>0</span></div>
+
+    <div class="flexbox">
+      <div class="textbox">
+        <p>Balloon Cat has floated so high she has entered...</p>
+        <p>SPAAAAAACE!</p>
+        <p>It's your job to keep her balloon away from those pesky drones.</p>
+        <p>Helium can be quite... flamable.</p>
+      </div>
+      <div class="board"></div>
+      <div class="scoreboard textbox">
+        <!-- Modify the scoreboard when important events occur in your game! -->
+        <p class="highscore">High score: <span class="score">0</span></p>
+        <p class="current">Current score: <span class="score">0</span></p>
+        <p class="collisions">Collisions: <span class="score">0</span></p>
+      </div>
     </div>
-    <div class="board"><div class="mouse"></div></div>
+    <h4 class="authors">Made By Jerry Krusinski &amp; Megan Rabuse</h4>
     <script src="lib/d3.js" charset="utf-8"></script>
     <script src='watchout.js'></script>
   </body>

@@ -13,9 +13,9 @@ cat.enter()
    .attr('class', 'cat')
    .attr('xlink:href', 'balloonCat.gif');
 
-const highScore = d3.select('div.highscore');
-const currentScore = d3.select('div.current');
-const collisions = d3.select('div.collisions');
+const highScore = d3.select('p.highscore');
+const currentScore = d3.select('p.current');
+const collisions = d3.select('p.collisions');
 let score = {
   high: 0,
   current: 0,
@@ -30,7 +30,7 @@ const updateScore = function (element, counter) {
 const _updateEnemies = function () {
 
   const selection = svg.selectAll('image')
-    .data([1, 2, 3, 4, 5, 6], id => id);
+    .data([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], id => id);
 
   selection
     .enter()
@@ -41,7 +41,7 @@ const _updateEnemies = function () {
     .attr('xlink:href', 'spaceInvader.gif');
 
   selection
-    .transition().duration(1500).ease('linear')
+    .transition().duration(1000).ease('linear')
     .attr('x', () => randomCoor(w - 46))
     .attr('y', () => randomCoor(h - 80));
 };
@@ -79,7 +79,7 @@ const findEnemyCoor = function (id) {
 };
 
 const checkPositions = function () {
-  const minDist = 48; //catRadius(25) + enemyRadius(23)
+  const minDist = 60; //catRadius(25) + enemyRadius(23)
   let catCoor = findCatCoor();
   for (let i = 1; i <= 6; i++) {
     let enemyCoor = findEnemyCoor(i);
@@ -91,6 +91,12 @@ const checkPositions = function () {
       updateScore(currentScore, score.current);
       score.collisions++;
       updateScore(collisions, score.collisions);
+      cat.attr('xlink:href', "boom.gif");
+      clearInterval(checker);
+      setTimeout(function() {
+        cat.attr('xlink:href', "balloonCat.gif");
+        checker = setInterval(checkPositions, 100);
+      }, 500);
       return;
     }
   }
@@ -104,5 +110,5 @@ const checkPositions = function () {
 
 };
 _updateEnemies();
-setInterval(checkPositions, 100);
-setInterval(_updateEnemies, 1500);
+var checker = setInterval(checkPositions, 100);
+setInterval(_updateEnemies, 1000);
