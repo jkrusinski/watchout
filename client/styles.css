@@ -1,7 +1,6 @@
-/* your beautiful css styling goes here! */
 body {
   background-color: #140B27;
-  background-image: url("pinkStars.gif");
+  background-image: url("media/pinkStars.gif");
   font-family: "Press Start 2P", cursive;
   width: 100%;
   color: white;
@@ -14,13 +13,11 @@ h1 {
   margin: 80px 0;
   text-align: center;
 }
-/* Note: an asteroid image is included in this repo.
-Feel free to use it if you like. */
+
 .textbox {
   color: white;
   background-color: #6D5274;
   border-radius: 4px;
-  /*border: 5px solid #FBFFD3;*/
   width: 15em;
   padding: 0 10px;
   font-family: 'Bungee Hairline', cursive;
@@ -43,7 +40,7 @@ Feel free to use it if you like. */
   align-items: center;
 }
 
-div.board {
+.board {
   display: inline-block;
   padding: 8px;
   background-color: #FBFFD3;
@@ -54,7 +51,7 @@ div.board {
 svg {
   cursor: none;
   background-color: #332F6F;
-  background-image: url('movingSpace.gif');
+  background-image: url('media/movingSpace.gif');
   border-radius: 8px;
 }
 
